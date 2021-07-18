@@ -1,0 +1,24 @@
+/* TRANCAR BANCO PARA BACKUP */
+LOCK INSTANCE FOR BACKUP;
+
+UNLOCK INSTANCE;
+
+
+/* CRIANDO USUARIOS */
+-- aba administracao
+-- users
+-- add acount
+-- localhost (servidor)
+-- aba privilegios
+-- apply
+
+/* USUARIO DBA ACESSANDO DE LOCALHOST*/
+CREATE USER 'admin02'@'localhost' IDENTIFIED BY 'senha';
+GRANT ALL PRIVILEGES ON *.* TO 'admin02'@'localhost' WITH GRANT OPTION;
+
+DROP USER 'admin02'@'localhost';
+
+/* USUARIO COM ACESSO A UM BANCO ESPECIFICO ACESSANDO DE QUALQUER LOCAL */
+CREATE USER 'admin03'@'%' IDENTIFIED BY 'senha';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE
+ON sucos_vendas.* TO 'admin03'@'%';
